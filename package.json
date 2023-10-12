@@ -1,10 +1,8 @@
 {
   "name": "@xiasiyong/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
-  "jsnext:main": "lib/index.esm.js",
-  "browser": "lib/index.umd.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib"
