@@ -1,6 +1,6 @@
 {
   "name": "@xiasiyong/utils",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,9 @@
   "author": "xsy <514123901@qq.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clean && rollup -c && npm run copy:index",
+    "clean": "rm -rf lib",
+    "copy:index": "cp src/index.ts lib/index.js",
     "test": "jest"
   },
   "devDependencies": {

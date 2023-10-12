@@ -3,30 +3,33 @@ const typescript = require("@rollup/plugin-typescript");
 const commonjs = require("@rollup/plugin-commonjs");
 const terser = require("@rollup/plugin-terser");
 const babel = require("@rollup/plugin-babel");
+const path = require("path");
+const fs = require("fs");
+
+const sourceDir = path.resolve(__dirname, "src");
+console.log(sourceDir);
+
+const buildEntry = (dir) => {
+  return fs.readdirSync(dir).reduce((entries, filename) => {
+    console.log(dir);
+    if (filename === "index.ts" || filename === "test") return entries;
+    const filepath = path.resolve(dir, filename);
+    entries.push(filepath);
+    return entries;
+  }, []);
+};
+
+const entries = buildEntry(sourceDir);
 
 module.exports = [
   {
-    input: "./src/index.ts",
+    input: entries,
     output: [
       {
         dir: "lib",
-        format: "cjs",
-        entryFileNames: "[name].cjs.js",
-        sourcemap: false, // 是否输出sourcemap
-      },
-      {
-        dir: "lib",
         format: "esm",
-        entryFileNames: "[name].esm.js",
-        sourcemap: false, // 是否输出sourcemap
-      },
-      {
-        dir: "lib",
-        format: "umd",
-        entryFileNames: "[name].umd.js",
-        name: "FE_utils", // umd模块名称，相当于一个命名空间，会自动挂载到window下面
-        sourcemap: false,
-        plugins: [terser()],
+        entryFileNames: "[name].js",
+        // sourcemap: true, // 是否输出sourcemap
       },
     ],
     plugins: [
