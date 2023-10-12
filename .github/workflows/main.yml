@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16.x"
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - name: Cache Node Dependencies #设置依赖缓存.
         id: cache
         uses: actions/cache@v1
@@ -30,9 +30,8 @@ jobs:
       - name: build utils
         run: |
           npm run build
-      - name publish
+      - name: publish
         run: |
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
