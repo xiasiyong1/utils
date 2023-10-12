@@ -30,7 +30,9 @@ jobs:
       - name: build utils
         run: |
           npm run build
-        run: npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name publish
+        run: |
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
