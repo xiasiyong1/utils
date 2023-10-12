@@ -1,12 +1,12 @@
 {
   "name": "@xiasiyong/utils",
-  "version": "1.0.3",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
+  "version": "1.0.4",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
+  "sideEffects": false,
   "description": "前端业务代码工具库",
   "repository": {
     "type": "git",
